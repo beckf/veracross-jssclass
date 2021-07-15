@@ -23,7 +23,6 @@ jssserver = os.getenv("jssserver")
 vcapiuser = os.getenv("vcapiuser")
 vcapipass = os.getenv("vcapipass")
 vcapiclient = os.getenv("vcapiclient")
-vcapiserver = os.getenv("vcapiserver")
 logFile = "logVeracrossJSS.log"
 
 # Setup logging
@@ -41,7 +40,7 @@ updatedCount = 0
 
 # veracross-api setup
 vc_info = {
-    'school_short_name': 'da',
+    'school_short_name': vcapiclient,
     'vcuser': vcapiuser,
     'vcpass': vcapipass
 }
