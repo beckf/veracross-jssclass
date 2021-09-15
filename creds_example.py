@@ -1,0 +1,6 @@
+jssuser = "JSS API User"
+jsspass = "JSS API Pass"
+jssserver = "https://jss.domain.local:8443"
+vcapiuser = "VC API User"
+vcapipass = "VC API Password"
+vcapiclient = "VC School Short Code"
