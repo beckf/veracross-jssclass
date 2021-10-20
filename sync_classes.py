@@ -60,13 +60,16 @@ def jss_validate_vc_class():
 
     for c in jss_classes.get("classes"):
         if c.get("name") not in classes:
-            log("Deleting class {} from JAMF.".format(c.get("name")), "info")
-            request_url = creds.jssserver + '/JSSResource/classes/id/' + str(c.get("id"))
-            delete_response = requests.delete(request_url, auth=auth_phrase, headers=header)
-            if delete_response.status_code == requests.codes.ok:
-                log("Deleted class.", "info")
+            if "[local]" in c.get("description"):
+                log("Not deleting class {} from JAMF. Marked as local.".format(c.get("name")), "info")
             else:
-                log("Could not delete class", "info")
+                log("Deleting class {} from JAMF.".format(c.get("name")), "info")
+                request_url = creds.jssserver + '/JSSResource/classes/id/' + str(c.get("id"))
+                delete_response = requests.delete(request_url, auth=auth_phrase, headers=header)
+                if delete_response.status_code == requests.codes.ok:
+                    log("Deleted class.", "info")
+                else:
+                    log("Could not delete class", "info")
 
 
 def jss_check_update_class(class_name, xml_data):
